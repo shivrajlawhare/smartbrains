@@ -1,0 +1,19 @@
+.signout{
+    width: 10%;
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: underline;
+    font-size: 200%;
+    text-decoration-color: white;
+    color: white;
+}
+
+.signout:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.na{
+    display: flex;
+    justify-content: flex-end;
+}

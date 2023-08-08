@@ -1,0 +1,43 @@
+.statement{
+    display: flex;
+    justify-content: center;
+    color: aliceblue;
+    
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.combined{
+    width: 30vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    box-shadow: 10px white;
+    border-radius: 5px;
+}
+
+.bot:hover{
+    transform: scale(1.1,1.1);
+    transition: 300ms;
+}
+
+.imp{
+    height: 25px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.bot{
+    height: 25px;
+    background-image: linear-gradient(to right,#02AABD,#00CDAC);
+    border-radius: 5px;
+}
