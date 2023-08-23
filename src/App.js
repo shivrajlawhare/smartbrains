@@ -115,27 +115,23 @@ class App extends Component {
 
     fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
         .then(response => response.json())
-        .then(result => {
-          if(result){
-            fetch('http//:localhost:3000/image',{
+        .then(response => {
+          if(response){
+            fetch('http://localhost:3000/image', {
               method: 'put',
               headers: {'Content-Type': 'application/json'},
               body: JSON.stringify({
-                  id: this.state.user.id
+                id: this.state.user.id
               })
             })
-              .then(response => response.json() )
+              .then(response => response.json())
               .then(count => {
-                this.setState(
-                  Object.assign(this.state.user, {entries: count})
-                  // {user: {entries: count}}
-                )
-              })
+                this.setState(Object.assign(this.state.user, { entries: count}))
+              }) 
           }
-          this.displayFlexBox(this.calculateFaceLocation(result))
+          this.displayFlexBox(this.calculateFaceLocation(response))
         })
-        .catch(error => console.log(error));
-
+        .catch(err => console.log(err));
   }
 
   onRouteChange = (route) => {
@@ -176,5 +172,7 @@ class App extends Component {
     );
   }
 }
+
+
 
 export default App;
