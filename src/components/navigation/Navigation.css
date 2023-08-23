@@ -6,6 +6,8 @@
     font-size: 200%;
     text-decoration-color: white;
     color: white;
+    margin: 20px;
+    padding: 10px;
 }
 
 .signout:hover{
