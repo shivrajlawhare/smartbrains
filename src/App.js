@@ -9,25 +9,25 @@ import React ,{ Component } from 'react';
 import Signin from './components/signin/Signin';
 import Register from './components/register/Register';
 
-
+const initialState = {
+  input: '',
+  imgurl: '',
+  box: {},
+  route: 'signin',
+  inSignedIn: false,
+  user: {
+    name: '',
+    id: '',
+    email: '',
+    entries: 0,
+    joined: '',
+  }
+}
 
 class App extends Component {
   constructor(){
     super();
-    this.state = {
-      input: '',
-      imgurl: '',
-      box: {},
-      route: 'signin',
-      inSignedIn: false,
-      user: {
-        name: '',
-        id: '',
-        email: '',
-        entries: 0,
-        joined: '',
-      }
-    }
+    this.state = initialState
   }
 
   loadUser = (data) => {
@@ -117,7 +117,7 @@ class App extends Component {
         .then(response => response.json())
         .then(response => {
           if(response){
-            fetch('http://localhost:3000/image', {
+            fetch('https://smart-brain-api-bh0l.onrender.com/image', {
               method: 'put',
               headers: {'Content-Type': 'application/json'},
               body: JSON.stringify({
@@ -128,6 +128,7 @@ class App extends Component {
               .then(count => {
                 this.setState(Object.assign(this.state.user, { entries: count}))
               }) 
+              .catch(console.log)
           }
           this.displayFlexBox(this.calculateFaceLocation(response))
         })
@@ -136,7 +137,7 @@ class App extends Component {
 
   onRouteChange = (route) => {
     if(route === 'signout'){
-      this.setState({isSignedin: false});
+      this.setState(initialState);
     } else if (route === 'home'){
       this.setState({isSignedin: true});
     }
